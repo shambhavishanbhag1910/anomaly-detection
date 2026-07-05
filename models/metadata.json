@@ -1,0 +1,10 @@
+{
+  "autoencoder_threshold": 0.04117749025356422,
+  "features": [
+    "Air temperature [K]",
+    "Process temperature [K]",
+    "Rotational speed [rpm]",
+    "Torque [Nm]",
+    "Tool wear [min]"
+  ]
+}
