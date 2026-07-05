@@ -1,5 +1,5 @@
 {
-  "autoencoder_threshold": 0.04117749025356422,
+  "autoencoder_threshold": 0.102761037291968,
   "features": [
     "Air temperature [K]",
     "Process temperature [K]",
