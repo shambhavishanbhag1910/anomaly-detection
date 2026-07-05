@@ -1,0 +1,33 @@
+# --- Deep Learning / Machine Learning Specifics ---
+data/
+datasets/
+raw/
+processed/
+*.h5
+*.pkl
+*.pth
+*.pt
+*.onnx
+model_weights/
+checkpoint/
+.checkpoint/
+
+# --- Python & Environment Artifacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# --- IDEs and Notebooks ---
+.vscode/
+.idea/
+.ipynb_checkpoints/
+
+# --- System / Logs ---
+*.log
+.DS_Store
+Thumbs.db

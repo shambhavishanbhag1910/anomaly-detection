@@ -20,3 +20,4 @@ jupyter
 ipykernel
 importlib_resources
 ucimlrepo
+scikit-learn
