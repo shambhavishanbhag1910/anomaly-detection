@@ -31,3 +31,16 @@ env/
 *.log
 .DS_Store
 Thumbs.db
+
+# Ignore python virtual environments
+anomaly/
+venv/
+.venv/
+env/
+
+# Ignore python bytecode and caches
+__pycache__/
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
