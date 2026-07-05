@@ -104,6 +104,17 @@ This project demonstrates:
 * Machine Learning vs Deep Learning comparison
 * Industrial AI application development
 
+## Model Results
+```text
+| Model             | Precision | Recall | F1       | ROC AUC |
+| Isolation Forest  | 0.1282    | 0.1471 | 0.1370   | 0.8507  |
+| Autoencoder       | 0.1071    | 0.1765 | 0.1333   | 0.6833  |
+
+The Autoencoder achieved slightly higher recall, while Isolation Forest
+provided stronger ROC AUC, higher F1 score, and fewer false-positive alerts.
+```
+
+
 ## Future Improvements
 
 * LSTM Autoencoder for time-series sensor data
@@ -113,3 +124,10 @@ This project demonstrates:
 * LLM-based maintenance investigation guidance
 * Docker and AWS deployment
 * Model monitoring and drift detection
+
+## Front End Samples
+
+![(image.png)]
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)

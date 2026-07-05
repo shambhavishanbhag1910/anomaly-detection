@@ -9,3 +9,5 @@ joblib
 flask
 jupyter
 ipykernel
+pytest
+gunicorn

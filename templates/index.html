@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Industrial Machine Anomaly Detection
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         TOP NAVIGATION
+    ========================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                M
+            </div>
+
+            <div>
+                <h1>
+                    Machine Intelligence
+                </h1>
+
+                <p>
+                    Industrial Anomaly Detection
+                </p>
+            </div>
+
+        </div>
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            Models Ready
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="page-container">
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div>
+
+                <span class="eyebrow">
+                    PREDICTIVE MAINTENANCE AI
+                </span>
+
+                <h2>
+                    Detect abnormal machine behavior
+                    before it becomes a maintenance problem.
+                </h2>
+
+                <p>
+                    Analyze machine operating conditions using
+                    Isolation Forest and a Deep Autoencoder.
+                    The system evaluates both models and assigns
+                    an investigation priority.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MAIN GRID
+        ========================== -->
+
+        <section class="workspace-grid">
+
+
+            <!-- =========================
+                 INPUT PANEL
+            ========================== -->
+
+            <div class="panel input-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Machine Operating Conditions
+                        </h3>
+
+                        <p>
+                            Enter current sensor and operating values.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="sampleButton"
+                    >
+                        Load Sample
+                    </button>
+
+                </div>
+
+
+                <form id="anomalyForm">
+
+
+                    <!-- Temperature -->
+
+                    <div class="input-section">
+
+                        <div class="input-section-title">
+                            Temperature
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="airTemperature">
+                                    Air Temperature
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <input
+                                        id="airTemperature"
+                                        type="number"
+                                        step="0.1"
+                                        min="280"
+                                        max="330"
+                                        value="300"
+                                        required
+                                    >
+
+                                    <span class="input-unit">
+                                        K
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="processTemperature">
+                                    Process Temperature
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <input
+                                        id="processTemperature"
+                                        type="number"
+                                        step="0.1"
+                                        min="280"
+                                        max="350"
+                                        value="310"
+                                        required
+                                    >
+
+                                    <span class="input-unit">
+                                        K
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Machine Load -->
+
+                    <div class="input-section">
+
+                        <div class="input-section-title">
+                            Operating Load
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="rotationalSpeed">
+                                    Rotational Speed
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <input
+                                        id="rotationalSpeed"
+                                        type="number"
+                                        step="1"
+                                        min="500"
+                                        max="4000"
+                                        value="1500"
+                                        required
+                                    >
+
+                                    <span class="input-unit">
+                                        RPM
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="torque">
+                                    Torque
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <input
+                                        id="torque"
+                                        type="number"
+                                        step="0.1"
+                                        min="0"
+                                        max="150"
+                                        value="40"
+                                        required
+                                    >
+
+                                    <span class="input-unit">
+                                        Nm
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tool Condition -->
+
+                    <div class="input-section">
+
+                        <div class="input-section-title">
+                            Tool Condition
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="toolWear">
+                                Tool Wear
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    id="toolWear"
+                                    type="number"
+                                    step="1"
+                                    min="0"
+                                    max="500"
+                                    value="100"
+                                    required
+                                >
+
+                                <span class="input-unit">
+                                    min
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Analyze Button -->
+
+                    <button
+                        type="submit"
+                        id="analyzeButton"
+                        class="primary-button"
+                    >
+
+                        <span id="buttonText">
+                            Analyze Machine Condition
+                        </span>
+
+                        <span
+                            id="buttonLoader"
+                            class="button-loader hidden"
+                        ></span>
+
+                    </button>
+
+
+                    <p
+                        id="errorMessage"
+                        class="error-message hidden"
+                    ></p>
+
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 RESULTS PANEL
+            ========================== -->
+
+            <div class="panel result-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Anomaly Assessment
+                        </h3>
+
+                        <p>
+                            Combined analysis from both detection models.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Empty State -->
+
+                <div
+                    id="emptyState"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        ◇
+                    </div>
+
+                    <h4>
+                        Ready for Analysis
+                    </h4>
+
+                    <p>
+                        Enter machine operating conditions
+                        and select Analyze Machine Condition.
+                    </p>
+
+                </div>
+
+
+                <!-- Results -->
+
+                <div
+                    id="resultsContainer"
+                    class="results-container hidden"
+                >
+
+
+                    <!-- Priority Banner -->
+
+                    <div
+                        id="priorityBanner"
+                        class="priority-banner"
+                    >
+
+                        <div>
+
+                            <span class="priority-label">
+                                Investigation Priority
+                            </span>
+
+                            <h4 id="priorityValue">
+                                Normal
+                            </h4>
+
+                        </div>
+
+                        <div
+                            id="priorityIcon"
+                            class="priority-icon"
+                        >
+                            ✓
+                        </div>
+
+                    </div>
+
+
+                    <!-- Model Cards -->
+
+                    <div class="model-grid">
+
+
+                        <!-- Isolation Forest -->
+
+                        <div class="model-card">
+
+                            <div class="model-card-header">
+
+                                <div>
+
+                                    <span class="model-type">
+                                        MACHINE LEARNING
+                                    </span>
+
+                                    <h4>
+                                        Isolation Forest
+                                    </h4>
+
+                                </div>
+
+                                <span
+                                    id="isoBadge"
+                                    class="model-badge"
+                                >
+                                    Normal
+                                </span>
+
+                            </div>
+
+
+                            <div class="metric-row">
+
+                                <span>
+                                    Anomaly Score
+                                </span>
+
+                                <strong id="isoScore">
+                                    0.0000
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-track">
+
+                                <div
+                                    id="isoProgress"
+                                    class="progress-bar"
+                                ></div>
+
+                            </div>
+
+
+                            <p class="model-description">
+                                Detects unusual combinations of
+                                operating conditions by isolating
+                                observations from normal patterns.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Autoencoder -->
+
+                        <div class="model-card">
+
+                            <div class="model-card-header">
+
+                                <div>
+
+                                    <span class="model-type">
+                                        DEEP LEARNING
+                                    </span>
+
+                                    <h4>
+                                        Deep Autoencoder
+                                    </h4>
+
+                                </div>
+
+                                <span
+                                    id="aeBadge"
+                                    class="model-badge"
+                                >
+                                    Normal
+                                </span>
+
+                            </div>
+
+
+                            <div class="metric-row">
+
+                                <span>
+                                    Reconstruction Error
+                                </span>
+
+                                <strong id="aeScore">
+                                    0.0000
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-track">
+
+                                <div
+                                    id="aeProgress"
+                                    class="progress-bar"
+                                ></div>
+
+                            </div>
+
+
+                            <p class="model-description">
+                                Measures how different the current
+                                operating pattern is from learned
+                                normal machine behavior.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Agreement -->
+
+                    <div class="agreement-card">
+
+                        <div class="agreement-icon">
+                            ◎
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Model Agreement
+                            </span>
+
+                            <strong id="agreementValue">
+                                -
+                            </strong>
+
+                            <p id="agreementDescription">
+                                -
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Recommendation -->
+
+                    <div class="recommendation-card">
+
+                        <span class="recommendation-label">
+                            RECOMMENDED RESPONSE
+                        </span>
+
+                        <h4 id="recommendationTitle">
+                            Continue Monitoring
+                        </h4>
+
+                        <p id="recommendationText">
+                            Machine behavior appears consistent
+                            with learned normal operating conditions.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HOW IT WORKS
+        ========================== -->
+
+        <section class="how-it-works">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    ANALYTICS WORKFLOW
+                </span>
+
+                <h3>
+                    How the system evaluates machine behavior
+                </h3>
+
+            </div>
+
+
+            <div class="workflow-grid">
+
+
+                <div class="workflow-step">
+
+                    <span class="step-number">
+                        1
+                    </span>
+
+                    <h4>
+                        Capture Signals
+                    </h4>
+
+                    <p>
+                        Temperature, speed, torque,
+                        and tool wear are collected.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    →
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span class="step-number">
+                        2
+                    </span>
+
+                    <h4>
+                        Detect Anomalies
+                    </h4>
+
+                    <p>
+                        ML and DL models independently
+                        evaluate abnormal behavior.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    →
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span class="step-number">
+                        3
+                    </span>
+
+                    <h4>
+                        Compare Models
+                    </h4>
+
+                    <p>
+                        Model agreement is used to
+                        strengthen investigation priority.
+                    </p>
+
+                </div>
+
+
+                <div class="workflow-arrow">
+                    →
+                </div>
+
+
+                <div class="workflow-step">
+
+                    <span class="step-number">
+                        4
+                    </span>
+
+                    <h4>
+                        Prioritize Action
+                    </h4>
+
+                    <p>
+                        Maintenance teams receive a
+                        Normal, Medium, or High priority.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        Industrial Machine Anomaly Detection
+
+        <span>
+            Isolation Forest + Deep Autoencoder
+        </span>
+
+    </footer>
+
+
+    <script
+        src="{{ url_for('static', filename='app.js') }}"
+    ></script>
+
+</body>
+</html>

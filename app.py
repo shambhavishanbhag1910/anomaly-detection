@@ -47,6 +47,12 @@ AE_THRESHOLD = metadata[
 def home():
     return render_template("index.html")
 
+@app.route("/health")
+def health():
+    return jsonify({
+        "status": "healthy",
+        "models_loaded": True
+    }), 200
 
 @app.route("/predict", methods=["POST"])
 def predict():
