@@ -69,17 +69,26 @@ autoencoder = build_autoencoder(
 
 train_autoencoder(
     autoencoder,
-    X_train
+    X_ae_train
 )
 
 
-train_errors = reconstruction_errors(
+X_ae_train, X_ae_val = train_test_split(
+    X_train,
+    test_size=0.2,
+    random_state=42,
+)
+
+val_errors = reconstruction_errors(
     autoencoder,
-    X_train
+    X_ae_val
 )
 
 threshold = float(
-    np.percentile(train_errors, 95)
+    np.percentile(
+        val_errors,
+        95
+    )
 )
 
 
