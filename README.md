@@ -105,13 +105,29 @@ This project demonstrates:
 * Industrial AI application development
 
 ## Model Results
-```markdown
+```text
 | Model | Precision | Recall | F1 | ROC AUC |
 |---|---:|---:|---:|---:|
 | Isolation Forest | 0.1282 | 0.1471 | 0.1370 | 0.8507 |
 | Autoencoder | 0.1071 | 0.1765 | 0.1333 | 0.6833 |
 
 ```
+
+### Isolation Forest:
+    Precision 0.1282
+    Recall 0.1471
+    F1 0.1370
+    ROC AUC 0.8507
+
+### Autoencoder:
+    Precision 0.1071
+    Recall 0.1765
+    F1 0.1333
+    ROC AUC 0.6833
+
+
+
+* The Autoencoder achieved slightly higher failure recall, while Isolation Forest demonstrated stronger ranking performance, a slightly higher F1 score, and lower alert volume. The project therefore uses both methods to explore complementary anomaly signals rather than assuming the deep learning model is automatically superior.
 
 ## Future Improvements
 

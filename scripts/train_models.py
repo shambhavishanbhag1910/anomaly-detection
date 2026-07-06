@@ -62,6 +62,11 @@ iso_model = train_isolation_forest(
 
 
 # Autoencoder
+X_ae_train, X_ae_val = train_test_split(
+    X_train,
+    test_size=0.2,
+    random_state=42,
+)
 
 autoencoder = build_autoencoder(
     input_dim=X_train.shape[1]
@@ -70,13 +75,6 @@ autoencoder = build_autoencoder(
 train_autoencoder(
     autoencoder,
     X_ae_train
-)
-
-
-X_ae_train, X_ae_val = train_test_split(
-    X_train,
-    test_size=0.2,
-    random_state=42,
 )
 
 val_errors = reconstruction_errors(
